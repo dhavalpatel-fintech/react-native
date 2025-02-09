@@ -69,9 +69,7 @@ export default function App() {
     setLowerCase(true)
     setupperCase(false)
     setNumbers(false)
-    setSymbols(false)
-    
-    
+    setSymbols(false) 
   }
 
   return (
@@ -119,7 +117,7 @@ export default function App() {
          <View style={styles.inputWrapper}>
           <Text style={styles.heading}>Include lowercase</Text>
           <BouncyCheckbox
-          // disableBuiltInState
+          disableBuiltInState
           isChecked={lowerCase}
           onPress={() => setLowerCase(!lowerCase)}
           fillColor="#29AB87"
@@ -128,7 +126,7 @@ export default function App() {
          <View style={styles.inputWrapper}>
                   <Text style={styles.heading}>Include Uppercase letters</Text>
                   <BouncyCheckbox
-                    // disableBuiltInState
+                    disableBuiltInState
                     isChecked={upperCase}
                     onPress={() => setupperCase(!upperCase)}
                     fillColor="#FED85D"
