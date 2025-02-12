@@ -1,5 +1,5 @@
-import { SafeAreaView, StyleSheet, Text, useColorScheme, View } from 'react-native'
-import React, { useCallback } from 'react'
+import { SafeAreaView, StyleSheet, Text, useColorScheme, View } from 'react-native';
+import React, { useCallback } from 'react';
 
 const App = () => {
   // 1
