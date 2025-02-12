@@ -13,7 +13,6 @@ const App = () => {
     setText('');
   }
   
-
   return (
     <View style={styles.container}>
       <Text style={styles.text}>Hello Duniya, How are you??</Text>
