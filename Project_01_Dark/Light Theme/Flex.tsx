@@ -1,61 +1,56 @@
-import { SafeAreaView, StyleSheet, Text, useColorScheme, View } from 'react-native';
-import React, { useCallback } from 'react';
+import { StyleSheet, Text, useColorScheme, View } from 'react-native';
+import React from 'react';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 const App = () => {
-  // 1
-  const theme1 = useColorScheme() === 'dark';
-  const backgroundColor1 = theme1 ? 'black' : 'white';
-  const textColor1 = theme1 ? 'white' : 'black';
+  const theme = useColorScheme();
+  console.log("Current Theme:", theme);
 
-  // 2
-  const theme2 = useColorScheme() === 'light';
-  const backgroundColor2 = theme1 ? 'white' : 'black';
-  const textColor2 = theme1 ? 'black' : 'white';
+  // box-01
+  const isDarkMode1 = theme === 'dark';
+  const bcg1 = isDarkMode1 ? "black" : "white";
+  const txtcolor1 = isDarkMode1 ? "white" : "black";
 
+  // box-02
+  const isDarkMode2 = theme === 'light';
+  const bcg2 = isDarkMode2 ? "black" : "white";
+  const txtcolor2 = isDarkMode2 ? "white" : "black";
 
   return (
-    <SafeAreaView style={styles.bigContainer}>
+    <SafeAreaView style={[styles.wholeContainer, { backgroundColor:'lightblue' }]}>
       {/* box-01 */}
-      <View style={[styles.container1, {backgroundColor:backgroundColor1}]}>
-        <Text style={{color:textColor1, fontSize:50, fontWeight:'bold'}}>Dhaval</Text>
+      <View style={[styles.container, { backgroundColor: bcg1 }]}>
+        <Text style={[styles.title, { color: txtcolor1 }]}>Box-01</Text>
       </View>
 
       {/* box-02 */}
-      <View style={[styles.container2, {backgroundColor:backgroundColor2}]}>
-        <Text style={{color:textColor2, fontSize:50, fontWeight:'bold'}}>Patel</Text>
+      <View style={[styles.container, { backgroundColor: bcg2 }]}>
+        <Text style={[styles.title, { color: txtcolor2 }]}>Box-02</Text>
       </View>
     </SafeAreaView>
-  )
-}
+  );
+};
 
-export default App
+export default App;
 
 const styles = StyleSheet.create({
-  bigContainer:{
-    // flex:0.5,
-    width:'100%',
-    height:'100%',
-    backgroundColor:'black',
-    padding:20,
-    gap:20
-
+  wholeContainer: {
+    width: '100%',
+    height: '100%',
+    padding: 10,
+    gap: 10,
+    borderWidth: 5,
+    borderColor: 'green',
   },
-  container1:{
-    width:'100%',
-    height:'100%',
-    flex:0.5,
-    justifyContent:'center',
-    alignItems:'center',
-    borderWidth:1,
-    borderColor:'white'
+  container: {
+    flex: 1, // Instead of 1/2
+    width: '100%',
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderWidth: 2,
   },
-  container2:{
-    width:'100%',
-    height:'100%',
-    flex:0.5,
-    justifyContent:'center',
-    alignItems:'center',
-    borderWidth:1,
-    borderColor:'white'
+  title: {
+    fontSize: 30,
+    fontWeight: 'bold',
   }
-})
+});
