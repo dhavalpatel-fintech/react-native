@@ -13,7 +13,7 @@ import {
   import * as Yup from 'yup';
   import React from 'react';
   
-  // Validation Schema
+  // ✅ Validation Schema
   const SignupSchema = Yup.object().shape({
     name: Yup.string()
       .min(6, 'Too Short!')
@@ -48,7 +48,7 @@ import {
           mobile: '',
         }}
         validationSchema={SignupSchema}
-        onSubmit={values => Alert.alert('Form Data', JSON.stringify(values))}
+        onSubmit={(values) => Alert.alert('Form Data', JSON.stringify(values))}
       >
         {({
           values,
@@ -59,17 +59,22 @@ import {
           setFieldTouched,
           isValid,
         }) => (
-          <KeyboardAvoidingView style={styles.container} behavior='padding' keyboardVerticalOffset={Platform.OS === "android" ? 10 : 0}>
+          <KeyboardAvoidingView
+            style={styles.container}
+            behavior="padding"
+            keyboardVerticalOffset={Platform.OS === 'android' ? 10 : 0}
+          >
             <StatusBar barStyle="light-content" />
   
             <View style={styles.formContainer}>
               <Text style={styles.title}>Sign-Up</Text>
   
-              {/* Full Name Field */}
+              {/* ✅ Full Name Field */}
               <View style={styles.inputWrapper}>
                 <TextInput
                   style={styles.inputStyle}
                   placeholder="Full Name"
+                  keyboardType="default" // Shows a standard keyboard
                   value={values.name}
                   onChangeText={handleChange('name')}
                   onBlur={() => setFieldTouched('name')}
@@ -79,13 +84,13 @@ import {
                 )}
               </View>
   
-              {/* Email Field */}
+              {/* ✅ Email Field */}
               <View style={styles.inputWrapper}>
                 <TextInput
                   style={styles.inputStyle}
                   placeholder="Email ID"
                   autoCapitalize="none"
-                  keyboardType="default"
+                  keyboardType="email-address" // Shows email-friendly keyboard
                   value={values.email}
                   onChangeText={handleChange('email')}
                   onBlur={() => setFieldTouched('email')}
@@ -95,12 +100,13 @@ import {
                 )}
               </View>
   
-              {/* Password Field */}
+              {/* ✅ Password Field */}
               <View style={styles.inputWrapper}>
                 <TextInput
                   style={styles.inputStyle}
                   placeholder="Password"
                   secureTextEntry={true}
+                  keyboardType="default" // Standard keyboard for passwords
                   value={values.password}
                   onChangeText={handleChange('password')}
                   onBlur={() => setFieldTouched('password')}
@@ -110,12 +116,13 @@ import {
                 )}
               </View>
   
-              {/* Confirm Password Field */}
+              {/* ✅ Confirm Password Field */}
               <View style={styles.inputWrapper}>
                 <TextInput
                   style={styles.inputStyle}
                   placeholder="Confirm Password"
                   secureTextEntry={true}
+                  keyboardType="default"
                   value={values.confirmPassword}
                   onChangeText={handleChange('confirmPassword')}
                   onBlur={() => setFieldTouched('confirmPassword')}
@@ -125,12 +132,12 @@ import {
                 )}
               </View>
   
-              {/* Mobile Number Field */}
+              {/* ✅ Mobile Number Field */}
               <View style={styles.inputWrapper}>
                 <TextInput
                   style={styles.inputStyle}
                   placeholder="Mobile Number"
-                  keyboardType="number-pad"
+                  keyboardType="number-pad" // Displays number keypad
                   maxLength={10}
                   value={values.mobile}
                   onChangeText={handleChange('mobile')}
@@ -141,8 +148,8 @@ import {
                 )}
               </View>
   
-              {/* Submit Button */}
-              <TouchableOpacity 
+              {/* ✅ Submit Button */}
+              <TouchableOpacity
                 onPress={handleSubmit}
                 disabled={!isValid}
                 style={[
